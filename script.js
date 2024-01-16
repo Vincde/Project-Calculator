@@ -14,7 +14,7 @@ function divide(a,b){
     return a / b;
 }
 
-function calculator(str){
+function operate(str){
     
     let arr;
     arr = str.split(' ');
@@ -27,5 +27,5 @@ function calculator(str){
     if(op === '+') return add(a,b);
     else if(op === '-') return subtract(a,b);
     else if(op === '*') return multiply(a,b);
-    else if(op === '/') return multiply(a,b);
+    else if(op === '/') return divide(a,b);
 }
