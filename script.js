@@ -26,6 +26,7 @@ function operate(a,op,b){
 function displayOutput(){
     const button = document.querySelectorAll('.calculator-container button'); 
 
+    button.addE
 }
 
 displayOutput();
