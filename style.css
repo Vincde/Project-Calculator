@@ -3,7 +3,7 @@ button{
     height: 60px;
 }
 
-.calculator-container{
+.calculatorContainer{
     width:450px;
     height: 300px;
     margin-left: auto;
@@ -15,6 +15,8 @@ button{
     border:2px solid green;
     height: 40px;
     width : 368px;  /* width has been found : the 4 buttons had a border of 2px which give us 8 more pixels from their width values (360) */
+    background-color : black;
+    color:white;
 }
 
 /* 

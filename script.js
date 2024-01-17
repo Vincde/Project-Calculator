@@ -24,9 +24,14 @@ function operate(a,op,b){
 
 
 function displayOutput(){
-    const button = document.querySelectorAll('.calculator-container button'); 
-
-    button.addE
+    const button = document.body.querySelector('.output');
+    const ber = document.body.querySelectorAll("button");
+    
+    for(let i = 0; i < ber.length; i++){
+        ber[i].addEventListener('click',(e) =>{
+            button.textContent = e.target.textContent;
+        });
+    }
 }
 
 displayOutput();
