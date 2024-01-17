@@ -1,19 +1,25 @@
 button{
-    width: 80px;
-    height: 50px;
+    width: 90px;
+    height: 60px;
 }
 
 .calculator-container{
-    display: flex;
-    
-    border:2px solid red;
-    width:300px;
+    width:450px;
     height: 300px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 80px;
 }
 
-.calculator-container .op{
-    width:60px;
+.output{
+    border:2px solid green;
+    height: 40px;
+    width : 368px;  /* width has been found : the 4 buttons had a border of 2px which give us 8 more pixels from their width values (360) */
 }
+
+/* 
+*{
+    border:2px solid red;
+    margin:5px;
+}
+ */
