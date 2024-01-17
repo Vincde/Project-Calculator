@@ -1,3 +1,19 @@
-*{
+button{
+    width: 80px;
+    height: 50px;
+}
+
+.calculator-container{
+    display: flex;
+    
     border:2px solid red;
+    width:300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.calculator-container .op{
+    width:60px;
 }

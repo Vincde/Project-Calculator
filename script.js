@@ -14,15 +14,7 @@ function divide(a,b){
     return a / b;
 }
 
-function operate(str){
-    
-    let arr;
-    arr = str.split(' ');
-
-    let a = +arr[0];
-    let b = +arr[2];
-
-    let op = arr[1];
+function operate(a,op,b){
 
     if(op === '+') return add(a,b);
     else if(op === '-') return subtract(a,b);
