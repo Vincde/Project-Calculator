@@ -21,3 +21,11 @@ function operate(a,op,b){
     else if(op === '*') return multiply(a,b);
     else if(op === '/') return divide(a,b);
 }
+
+
+function displayOutput(){
+    const button = document.querySelectorAll('.calculator-container button'); 
+
+}
+
+displayOutput();
