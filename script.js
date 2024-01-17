@@ -14,7 +14,16 @@ function divide(a,b){
     return a / b;
 }
 
-function operate(a,op,b){
+function operate(str){
+    let a,b,op;
+    let variablesArray = str.split(' ');
+    /* for(let i = 0; i < variablesArray.length ; i++){
+
+    } */
+
+    a = +variablesArray[0];
+    b = +variablesArray[2];
+    op = variablesArray[1];
 
     if(op === '+') return add(a,b);
     else if(op === '-') return subtract(a,b);
@@ -24,14 +33,33 @@ function operate(a,op,b){
 
 
 function displayOutput(){
-    const button = document.body.querySelector('.output');
-    const ber = document.body.querySelectorAll("button");
-    
-    for(let i = 0; i < ber.length; i++){
-        ber[i].addEventListener('click',(e) =>{
-            button.textContent = e.target.textContent;
+    const output = document.querySelector('.output');
+    const numbers = document.querySelectorAll(".numbers, .op");
+    const result = document.querySelector('.result');
+    const clear = document.querySelector('.clear');
+
+
+    for(let i = 0; i < numbers.length; i++){
+        numbers[i].addEventListener('click',(e) =>{
+            output.textContent += e.target.textContent;
         });
     }
+
+    clear.addEventListener('click',() =>{
+        output.textContent = '';
+    });
+
+    result.addEventListener('click',() =>{
+        let str = output.textContent;
+        if(str === null || str === undefined) output.textContent = '';
+        else{
+            output.textContent = operate(str);
+        }
+    });
+
+
+
+
 }
 
 displayOutput();
