@@ -17,6 +17,9 @@ function multiply(a,b){
 }
 
 function divide(a,b){
+    if(b === 0){
+        return 'There is an error! you are trying to divide by zero!';
+    }
     if((a / b) % 1 === 0){
         return a / b;
         }else return Math.round((a / b) * 100)/100;
@@ -29,10 +32,13 @@ function operate(str){
     let res;
 
     while(i <= variablesArray.length - 2){
-    a = +variablesArray[i];
-    b = +variablesArray[i+2];
+    a = variablesArray[i];
+    b = variablesArray[i+2];
     op = variablesArray[i+1];
-    
+
+    if(a === '' || b === '') return 'Error!,Clear and retry';
+    a = +a;
+    b = +b;
 
     if(isPossible(a,b,op)){
         switch(op){
@@ -57,10 +63,7 @@ function operate(str){
                 variablesArray[i+2] = res;
                 break;    
             }
-        }
-        
-        else{
-
+        }else{
          return 'Error!,Clear and retry';
         }
         i += 2;
@@ -90,9 +93,9 @@ function displayOutput(){
 
     result.addEventListener('click',() =>{
         let str = output.textContent;
-        if(str === null || str === undefined || str === ''){ 
+        if(str === null || str === undefined || str === '' || str.length < 5){ 
             output.textContent = '';
-            output.innerHTML = ''
+            output.innerHTML = '';
         }
         else{
             output.textContent = operate(str);
@@ -105,8 +108,7 @@ function displayOutput(){
 }
 
 function isPossible(a,b,op){
-    if(typeof a != 'number' || typeof b  != 'number') return false;
-    else if( typeof op != 'string') return false;
+    if(Number.isNaN(a) || Number.isNaN(b) || ((typeof op) != 'string')) return false;
     else return true;
 }
 
