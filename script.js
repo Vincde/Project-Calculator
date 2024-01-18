@@ -1,17 +1,25 @@
-function add(a,b){
+function add(a, b){
+    if((a + b) % 1 === 0){
     return a + b;
+    }else return Math.round((a + b) * 100)/100;
 }
 
 function subtract(a,b){
-    return a - b;
+    if((a - b) % 1 === 0){
+        return a - b;
+        }else return Math.round((a - b) * 100)/100;
 }
 
 function multiply(a,b){
-    return a * b;
+    if((a * b) % 1 === 0){
+        return a * b;
+        }else return Math.round((a * b) * 100)/100;
 }
 
 function divide(a,b){
-    return a / b;
+    if((a / b) % 1 === 0){
+        return a / b;
+        }else return Math.round((a / b) * 100)/100;
 }
 
 function operate(str){
