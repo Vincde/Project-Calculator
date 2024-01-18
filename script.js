@@ -35,13 +35,13 @@ function operate(str){
     a = variablesArray[i];
     b = variablesArray[i+2];
     op = variablesArray[i+1];
-
-    if(a === '' || b === '') return 'Error!,Clear and retry';
-    a = +a;
-    b = +b;
+    
 
     if(isPossible(a,b,op)){
-        switch(op){
+        a = +a;
+        b = +b;
+            switch(op){
+
             case '+':
                 res = add(a,b);
                 variablesArray[i+2] = res;
@@ -62,8 +62,9 @@ function operate(str){
                 res = divide(a,b);
                 variablesArray[i+2] = res;
                 break;    
-            }
-        }else{
+            }    
+        }
+        else{
          return 'Error!,Clear and retry';
         }
         i += 2;
@@ -76,9 +77,7 @@ function operate(str){
 function displayOutput(){
     const output = document.querySelector('.output');
     const numbers = document.querySelectorAll(".numbers, .op");
-    const result = document.querySelector('.result');
-    const clear = document.querySelector('.clear');
-
+    
 
     for(let i = 0; i < numbers.length; i++){
         numbers[i].addEventListener('click',(e) =>{
@@ -86,14 +85,39 @@ function displayOutput(){
         });
     }
 
+
+    
+    addFloatingButton(output);
+    addResultButton(output);
+    addClearButton(output);
+}
+
+function isPossible(a,b,op){
+
+    if (Number.isNaN(a) || 
+    Number.isNaN(b) ||
+    ((typeof op) != 'string') ||
+    a === '' ||
+    b === '')
+    return false;
+    else return true;
+}
+
+function addClearButton(output){
+    const clear = document.querySelector('.clear');
+
     clear.addEventListener('click',() =>{
         output.textContent = '';
         output.innerHTML = '';
     });
+}
+
+function addResultButton(output){
+    const result = document.querySelector('.result');
 
     result.addEventListener('click',() =>{
         let str = output.textContent;
-        if(str === null || str === undefined || str === '' || str.length < 5){ 
+        if(str === '' || str.length < 5){ 
             output.textContent = '';
             output.innerHTML = '';
         }
@@ -101,15 +125,17 @@ function displayOutput(){
             output.textContent = operate(str);
         }
     });
+}
+
+function addFloatingButton(output){
+    const floatingPoint = document.querySelector('#float');
 
 
-
+    floatingPoint.addEventListener('click',(e) => {
+        output.textContent += e.target.textContent;
+    },{once : true});
 
 }
 
-function isPossible(a,b,op){
-    if(Number.isNaN(a) || Number.isNaN(b) || ((typeof op) != 'string')) return false;
-    else return true;
-}
 
 displayOutput();
