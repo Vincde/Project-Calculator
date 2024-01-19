@@ -90,6 +90,7 @@ function displayOutput(){
     addFloatingButton(output);
     addResultButton(output);
     addClearButton(output);
+    addBackspaceButton(output);
 }
 
 function isPossible(a,b,op){
@@ -137,6 +138,16 @@ function addFloatingButton(output){
         output.textContent += e.target.textContent;
     });
 
+}
+
+function addBackspaceButton(output){
+    const backspace = document.querySelector('#backspace');
+
+    backspace.addEventListener('click',() =>{
+        let str = output.textContent;
+        output.textContent = str.substring(0,str.length - 1);
+        str = output.textContent;
+    });
 }
 
 
