@@ -91,6 +91,7 @@ function displayOutput(){
     addResultButton(output);
     addClearButton(output);
     addBackspaceButton(output);
+    addKeyboardSupport(output);
 }
 
 function isPossible(a,b,op){
@@ -148,6 +149,16 @@ function addBackspaceButton(output){
         output.textContent = str.substring(0,str.length - 1);
         str = output.textContent;
     });
+}
+
+function addKeyboardSupport(output){
+    /* const allKeys = document.querySelectorAll('button');
+
+    for(let i = 0; i < allKeys.length; i++ ){
+        allKeys.addEventListener('click', () =>{
+
+        });
+    } */
 }
 
 
