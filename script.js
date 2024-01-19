@@ -105,16 +105,20 @@ function isPossible(a,b,op){
 
 function addClearButton(output){
     const clear = document.querySelector('.clear');
+    const floatingPoint = document.querySelector('#float');
     
-
     clear.addEventListener('click',() =>{
         output.textContent = '';
         output.innerHTML = '';
-        const floatingPoint = document.querySelector('#float');
-        /* floatingPoint.removeEventListener('click',function floatingEvent(e){},{once : false}); */
-        addFloatingButton(output);    /* as far as i can see the once:true property deletes the event after fired. so the upper removeelement is not working as intended. */
     });
+
+    clear.removeEventListener('click',function floatingEvent(e){ /* ????????????? */
+        output.textContent += e.target.textContent;
+        addFloatingButton(output);
+    },true);
+      
 }
+
 
 function addResultButton(output){
     const result = document.querySelector('.result');
@@ -133,7 +137,6 @@ function addResultButton(output){
 
 function addFloatingButton(output){
     const floatingPoint = document.querySelector('#float');
-
 
     floatingPoint.addEventListener('click',function floatingEvent(e){
         output.textContent += e.target.textContent;
