@@ -111,12 +111,6 @@ function addClearButton(output){
         output.textContent = '';
         output.innerHTML = '';
     });
-
-    clear.removeEventListener('click',function floatingEvent(e){ /* ????????????? */
-        output.textContent += e.target.textContent;
-        addFloatingButton(output);
-    },true);
-      
 }
 
 
@@ -139,8 +133,9 @@ function addFloatingButton(output){
     const floatingPoint = document.querySelector('#float');
 
     floatingPoint.addEventListener('click',function floatingEvent(e){
+        if(output.textContent.includes('.')) return;
         output.textContent += e.target.textContent;
-    },{once : true});
+    });
 
 }
 
