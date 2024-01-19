@@ -1,35 +1,85 @@
+html,body{
+    background-color: green;
+}
+
+/* *{
+    border:2px solid red;
+    margin:2px;
+} */
+
+div{
+    font-size: 0;   /* this stops buttons from being distant to each other */
+}
 button{
-    width: 90px;
+    width: 93px;
     height: 60px;
 }
 
 .calculator-container{
-    width:450px;
-    height: 300px;
+    border:10px solid burlywood;
+    width:372px;
+    background-color:darkolivegreen;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
+    height:auto;
 }
 
 .output{
-    border:2px solid green;
+    border:3px solid black;
     height: 40px;
-    width : 368px;  /* width has been found : the 4 buttons had a border of 2px which give us 8 more pixels from their width values (360) */
-    background-color : black;
+    width : 368px; 
+    background-color : snow;
     color:white;
+    font-size: 32px;
+    color:black;
 }
 
 #float{
     width: 372px;
+    font-size: 32px;
+    line-height: normal;
+
 }
 
 #backspace{
     width: 372px;
 }
 
-/* 
-*{
-    border:2px solid red;
-    margin:5px;
+#division,#multiplication,#addition,#subtraction{
+    border-radius: 15px;
 }
- */
+
+
+ #division{
+    background-color:darkslateblue;
+ }
+
+ #multiplication{
+    background-color:darkslateblue;
+ }
+
+ #addition{
+    background-color:darkslateblue;
+ }
+
+ #subtraction{
+    background-color:darkslateblue;
+ }
+
+
+ #float,
+ #backspace{
+    background-color:cadetblue ;
+    border-radius: 10px;
+ }
+
+ .numbers{
+    background-color: darkslategrey;
+    border-radius: 15px;
+
+ }
+
+ .result,
+ .clear{
+    background-color: darkorange;
+ }
