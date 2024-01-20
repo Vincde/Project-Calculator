@@ -150,17 +150,50 @@ function addBackspaceButton(output){
         str = output.textContent;
     });
 }
-/* this deactivates the entire printing process */
-/* function addKeyboardSupport(output){                     
+
+
+function addKeyboardSupport(output){   
+    let arr = ['0','1','2','3','4','5','6','7','8','9','.'];
     document.addEventListener('keydown',(e) =>{
 
-        if(e.code === 'KeyL'){
-                    output.textContent += 'aaaaaaa';
+        if(output.textContent.includes('.')) arr.pop();
 
-                
+
+        if(e.ctrlKey && e.key === 'c'){
+            output.textContent = '';
+            output.innerHTML = '';
         }
-    }
+        
+
+        
+        if(e.shiftKey && e.key === '='){
+            
+            output.textContent = operate(output.textContent);
+        }
+        else if(e.key === 'Backspace'){
+        let str = output.textContent;
+        output.textContent = str.substring(0,str.length - 1);
+        str = output.textContent;
+        }
+        else if(e.shiftKey){
+            if(e.key === '*' || e.key === '/'){
+                output.textContent += ' ' + e.key + ' ';
+            }
+            else if(arr.includes(e.key)){
+                output.textContent += e.key;
+            }
+        }else{
+            if(e.key === '+' || e.key === '-'){
+                output.textContent += ' ' + e.key + ' ';
+            } 
+            else if(arr.includes(e.key)){
+                output.textContent += e.key;
+            }
+        }
+                
+    });
+    
 }
- */
+
 
 displayOutput();
