@@ -35,7 +35,8 @@ function operate(str){
     a = variablesArray[i];
     b = variablesArray[i+2];
     op = variablesArray[i+1];
-    
+    console.log(a);
+    console.log(b);
 
     if(isPossible(a,b,op)){
         a = +a;
@@ -64,9 +65,6 @@ function operate(str){
                 break;    
             }    
         }
-        else{
-         return 'Error!,Clear and retry';
-        }
         i += 2;
     }
 
@@ -81,7 +79,7 @@ function displayOutput(){
 
     for(let i = 0; i < numbers.length; i++){
         numbers[i].addEventListener('click',(e) =>{
-            if(output.textContent.length >= 25) return;
+            if(output.textContent.length >= 20) return;
             output.textContent += e.target.textContent;
         });
     }
@@ -122,9 +120,8 @@ function addResultButton(output){
 
     result.addEventListener('click',() =>{
         let str = output.textContent;
-        if(str === '' || str.length < 5){ 
-            output.textContent = '';
-            output.innerHTML = '';
+        if(!str.includes(' ') || str.length < 5){ 
+            output.textContent = 'Error! Clear and retry';
         }
         else{
             output.textContent = operate(str);
@@ -136,7 +133,7 @@ function addFloatingButton(output){
     const floatingPoint = document.querySelector('#float');
 
     floatingPoint.addEventListener('click',function floatingEvent(e){
-        if(output.textContent.length >= 25) return;
+        if(output.textContent.length >= 20) return;
         if(output.textContent.includes('.')) return;
         output.textContent += e.target.textContent;
     });
@@ -159,14 +156,6 @@ function addKeyboardSupport(output){
         let arr = ['0','1','2','3','4','5','6','7','8','9','.'];
         let control = 0;
         
-        if(output.textContent.length >= 25) return
-
-        
-        if(output.textContent.includes('.')){ 
-            arr.pop();
-            control = 1;
-        }
-
         if(e.ctrlKey && e.key === 'c'){
             output.textContent = '';
             output.innerHTML = '';
@@ -175,17 +164,30 @@ function addKeyboardSupport(output){
         }
         
         if(e.shiftKey && e.key === '='){
-            if(output.textContent.length < 5) return;
+            let str = output.textContent;
+            if(str.length < 5 || !(str.includes(' '))){
+                 output.textContent = 'Error,clear and try again';
+                 return;
+            }
             output.textContent = operate(output.textContent);
         }
 
 
         if(e.key === 'Backspace'){
-        let str = output.textContent;
-        output.textContent = str.substring(0,str.length - 1);
-        str = output.textContent;
+            let str = output.textContent;
+            output.textContent = str.substring(0,str.length - 1);
+            str = output.textContent;
         }
 
+
+
+        if(output.textContent.length >= 20) return;
+
+        
+        if(output.textContent.includes('.')){ 
+            arr.pop();
+            control = 1;
+        }
 
         if(e.shiftKey){
             if(e.key === '*' || e.key === '/'){
@@ -199,6 +201,7 @@ function addKeyboardSupport(output){
                 output.textContent += e.key;
             }
         }
+        
     });
     
 }
