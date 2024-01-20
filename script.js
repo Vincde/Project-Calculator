@@ -81,6 +81,7 @@ function displayOutput(){
 
     for(let i = 0; i < numbers.length; i++){
         numbers[i].addEventListener('click',(e) =>{
+            if(output.textContent.length >= 25) return;
             output.textContent += e.target.textContent;
         });
     }
@@ -135,6 +136,7 @@ function addFloatingButton(output){
     const floatingPoint = document.querySelector('#float');
 
     floatingPoint.addEventListener('click',function floatingEvent(e){
+        if(output.textContent.length >= 25) return;
         if(output.textContent.includes('.')) return;
         output.textContent += e.target.textContent;
     });
@@ -153,34 +155,41 @@ function addBackspaceButton(output){
 
 
 function addKeyboardSupport(output){   
-    let arr = ['0','1','2','3','4','5','6','7','8','9','.'];
     document.addEventListener('keydown',(e) =>{
+        let arr = ['0','1','2','3','4','5','6','7','8','9','.'];
+        let control = 0;
+        
+        if(output.textContent.length >= 25) return
 
-        if(output.textContent.includes('.')) arr.pop();
-
+        
+        if(output.textContent.includes('.')){ 
+            arr.pop();
+            control = 1;
+        }
 
         if(e.ctrlKey && e.key === 'c'){
             output.textContent = '';
             output.innerHTML = '';
+            if(control === 1) arr[arr.length + 1] = '.';
+            control = 0;
         }
-        
-
         
         if(e.shiftKey && e.key === '='){
-            
+            if(output.textContent.length < 5) return;
             output.textContent = operate(output.textContent);
         }
-        else if(e.key === 'Backspace'){
+
+
+        if(e.key === 'Backspace'){
         let str = output.textContent;
         output.textContent = str.substring(0,str.length - 1);
         str = output.textContent;
         }
-        else if(e.shiftKey){
+
+
+        if(e.shiftKey){
             if(e.key === '*' || e.key === '/'){
                 output.textContent += ' ' + e.key + ' ';
-            }
-            else if(arr.includes(e.key)){
-                output.textContent += e.key;
             }
         }else{
             if(e.key === '+' || e.key === '-'){
@@ -190,7 +199,6 @@ function addKeyboardSupport(output){
                 output.textContent += e.key;
             }
         }
-                
     });
     
 }
