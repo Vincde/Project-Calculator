@@ -150,16 +150,17 @@ function addBackspaceButton(output){
         str = output.textContent;
     });
 }
+/* this deactivates the entire printing process */
+/* function addKeyboardSupport(output){                     
+    document.addEventListener('keydown',(e) =>{
 
-function addKeyboardSupport(output){
-    /* const allKeys = document.querySelectorAll('button');
+        if(e.code === 'KeyL'){
+                    output.textContent += 'aaaaaaa';
 
-    for(let i = 0; i < allKeys.length; i++ ){
-        allKeys.addEventListener('click', () =>{
-
-        });
-    } */
+                
+        }
+    }
 }
-
+ */
 
 displayOutput();
