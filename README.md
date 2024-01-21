@@ -1,2 +1,2 @@
 # Project-Calculator
-Calculator website
+Early stage calculator website for the project : Calculator from The Odin Project.
